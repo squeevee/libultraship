@@ -17,11 +17,11 @@ void Audio::InitAudioPlayer() {
             mAudioPlayer = std::make_shared<WasapiAudioPlayer>();
             break;
 #endif
-#if defined(__linux)
-        case AudioBackend::PULSE:
-            mAudioPlayer = std::make_shared<PulseAudioPlayer>();
-            break;
-#endif
+// #if defined(__linux)
+//         case AudioBackend::PULSE:
+//             mAudioPlayer = std::make_shared<PulseAudioPlayer>();
+//             break;
+// #endif
         default:
             mAudioPlayer = std::make_shared<SDLAudioPlayer>();
     }
@@ -42,9 +42,9 @@ void Audio::Init() {
 #ifdef _WIN32
     mAvailableAudioBackends->push_back(AudioBackend::WASAPI);
 #endif
-#ifdef __linux
-    mAvailableAudioBackends->push_back(AudioBackend::PULSE);
-#endif
+// #ifdef __linux
+//     mAvailableAudioBackends->push_back(AudioBackend::PULSE);
+// #endif
     mAvailableAudioBackends->push_back(AudioBackend::SDL);
 
     SetAudioBackend(Context::GetInstance()->GetConfig()->GetAudioBackend());

@@ -178,9 +178,9 @@ AudioBackend Config::GetAudioBackend() {
         return AudioBackend::WASAPI;
     }
 
-    if (backendName == "pulse") {
-        return AudioBackend::PULSE;
-    }
+    // if (backendName == "pulse") {
+    //     return AudioBackend::PULSE;
+    // }
 
     if (backendName == "sdl") {
         return AudioBackend::SDL;
@@ -190,8 +190,8 @@ AudioBackend Config::GetAudioBackend() {
                  backendName);
 #ifdef _WIN32
     return AudioBackend::WASAPI;
-#elif defined(__linux)
-    return AudioBackend::PULSE;
+// #elif defined(__linux)
+//     return AudioBackend::PULSE;
 #endif
 
     return AudioBackend::SDL;
@@ -202,9 +202,9 @@ void Config::SetAudioBackend(AudioBackend backend) {
         case AudioBackend::WASAPI:
             SetString("Window.AudioBackend", "wasapi");
             break;
-        case AudioBackend::PULSE:
-            SetString("Window.AudioBackend", "pulse");
-            break;
+        // case AudioBackend::PULSE:
+        //     SetString("Window.AudioBackend", "pulse");
+        //     break;
         case AudioBackend::SDL:
             SetString("Window.AudioBackend", "sdl");
             break;
